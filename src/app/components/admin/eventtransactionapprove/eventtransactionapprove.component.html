@@ -1,0 +1,86 @@
+<h3>Event Subscription Approvals</h3>
+
+
+
+<dx-data-grid id="gridContainer" [dataSource]="RegionList" keyExpr="Id"
+
+[columnHidingEnabled]="false"
+[allowColumnReordering]="true" [allowColumnResizing]="true"
+[showBorders]="true" (onRowPrepared)="onRowPrepared($event)" [showRowLines]="true"
+[scrolling]="{ showScrollbar: 'always' }"
+
+>
+
+<!-- [remoteOperations]="true"  -->
+
+<dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+<dxo-export [enabled]="true" fileName="List" [allowExportSelectedData]="true"></dxo-export>
+<dxo-sorting mode="multiple"></dxo-sorting>
+<dxo-filter-panel [visible]="true"></dxo-filter-panel>
+<dxo-filter-builder [visible]="true"></dxo-filter-builder>
+<dxo-filter-row [visible]="true"></dxo-filter-row>
+<dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+<dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+<dxo-paging [enabled]="true"></dxo-paging>
+<dxo-paging [pageSize]="100"></dxo-paging>
+<dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+
+
+<dxo-grouping [contextMenuEnabled]="true" expandMode="rowClick"></dxo-grouping>
+<dxo-selection mode="none"></dxo-selection>
+
+
+
+
+<!-- <dxi-column dataField="Id"></dxi-column> -->
+<dxi-column dataField="EventName"></dxi-column>
+<dxi-column dataField="Name"></dxi-column>
+<dxi-column dataField="Mobile"></dxi-column>
+<dxi-column dataField="Category"></dxi-column>
+<dxi-column dataField="CreateDate" caption="Submission Date" dataType="datetime" format="dd-MMM-yyyy hh:mm a"></dxi-column>
+<dxi-column dataField="TotalAmount" dataType="number" [editorOptions]="{ format: '#,##,##0.##' }"></dxi-column>
+<dxi-column dataField="TotalCount" caption="Total Member Count" dataType="number"></dxi-column>
+<dxi-column dataField="BkashTransactionId"></dxi-column>
+<dxi-column dataField="BkashMobileNo"></dxi-column>
+
+<dxi-column dataField="MemberCount"></dxi-column>
+<dxi-column dataField="SpouseCount"></dxi-column>
+<dxi-column dataField="ChildCount"></dxi-column>
+<dxi-column dataField="DriverCount"></dxi-column>
+<dxi-column dataField="OtherCount"></dxi-column>
+
+<dxi-column dataField="MemberAmount"></dxi-column>
+<dxi-column dataField="SpouseAmount"></dxi-column>
+<dxi-column dataField="ChildAmount"></dxi-column>
+<dxi-column dataField="DriverAmount"></dxi-column>
+<dxi-column dataField="OtherAmount"></dxi-column>
+<dxi-column caption="Actions" [width]='100' cellTemplate="action"></dxi-column>
+<div *dxTemplate="let cell of 'action'">
+    <span *ngIf="cell.data.IsApproved">Approved</span>
+    <dx-button *ngIf="!cell.data.IsApproved" type="success" text="Approve"  (onClick)="Approve(cell.data.BkashTransactionId)"></dx-button>
+</div>
+
+<!-- <dxi-column dataField="EventId"></dxi-column> -->
+<!-- <dxi-column dataField="MemberId"></dxi-column> -->
+<!-- <dxi-column dataField="IsApproved"></dxi-column> -->
+<!-- <dxi-column dataField="ApprovedBy"></dxi-column> -->
+<!-- <dxi-column dataField="IsActive"></dxi-column> -->
+<!-- <dxi-column dataField="UpdatedDate"></dxi-column>
+<dxi-column dataField="CreatedBy"></dxi-column>
+<dxi-column dataField="UpdatedBy"></dxi-column> -->
+
+
+
+
+<dxo-summary>
+  <dxi-total-item summaryType="count" displayFormat="{0} Records" column="Id"></dxi-total-item>
+
+  <dxi-total-item summaryType="sum" displayFormat="{0}"
+  column="TotalAmount" [valueFormat]="{ format: '#,##,##0.##' , type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+
+  <dxi-total-item summaryType="sum" displayFormat="{0}"
+  column="TotalCount" [valueFormat]="{ format: '#,##,##0' , type: 'fixedPoint', precision: 0 }"></dxi-total-item>
+
+</dxo-summary>
+
+</dx-data-grid>

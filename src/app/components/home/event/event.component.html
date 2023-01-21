@@ -1,0 +1,350 @@
+<div class="inner-banner">
+  <section class="w3l-breadcrumb py-3">
+    <div class="container py-lg-2 py-md-3">
+      <h2 class="title">Event Registration</h2>
+    </div>
+  </section>
+</div>
+<!-- banner bottom shape -->
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+    </svg>
+  </div>
+</div>
+
+
+<section class="w3l-contact-7 " id="contact">
+  <div class="contacts-9 ">
+    <div class="container">
+      <div class="top-map">
+        <div class="row map-content-9" *ngIf="!alreadyRegistered">
+          <div class="col-lg-7">
+
+            <h3 class="title-big">Event Registration</h3>
+            <p class="mb-4 mt-lg-0 mt-2">Please register with required fields are marked *</p>
+
+
+            <div class="row left-part" style="margin-top: 0px;">
+             <div style="background: #529ff161; padding: 20px 0px; border-radius: 10px; font-weight: bold;">
+              <div class="col-sm-12" style="margin-bottom: 20px;">
+                Event Name: <dx-text-box readOnly="false" [(ngModel)]="eventModel.EventName" [showClearButton]="true">
+                </dx-text-box>
+              </div>
+              <div class="col-sm-12 form-grid">
+
+                <div class="row">
+                  <div class="col-sm-3" style="font-size: 16px;">
+                    Name:
+                  </div>
+                  <div class="col-sm-9" style="font-size: 20px;">
+                    <dx-text-box readOnly="true" [(ngModel)]="eventModel.Name" [showClearButton]="true"> </dx-text-box>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3" style="font-size: 16px;">
+                    Mobile:
+                  </div>
+                  <div class="col-sm-9" style="font-size: 20px;">
+                    <dx-text-box [(ngModel)]="eventModel.Mobile" [showClearButton]="true"> </dx-text-box>
+                  </div>
+                </div>
+              </div>
+             </div>
+              <div class="col-sm-12" style="    margin-top: 15px;">
+
+                <div class="row catagoryPart" >
+                  <label class="col-form-label col-sm-4">Select Category:</label>
+                  <dx-select-box class="col-sm-8" [dataSource]="categoryList" valueExpr="name" displayExpr="name"
+                    [searchEnabled]="true" [searchExpr]="['name']" [(ngModel)]="eventModel.Category"
+                    (onSelectionChanged)="categoryOptionChange($event)">
+                    <dx-validator validationGroup="validationGrp">
+                      <dxi-validation-rule type="required" message="Category Name Required"></dxi-validation-rule>
+                    </dx-validator>
+                  </dx-select-box>
+                </div>
+              </div>
+              <div class="col-sm-12" *ngIf="selectedCategory">
+                <label class="col-form-label" style="font-weight: bold;">Please put your child, driver or extra guest number here:</label>
+                <div class="row ">
+                  <div class="col-sm-12">
+                    <div class="row paymentOption">
+                      <div class="col-sm-4">
+                        <dx-check-box [(ngModel)]="memberChecked" text="Member" style="font-weight: bold;"
+                          (onValueChanged)="calculateTotal()"></dx-check-box>
+                        <span
+                          *ngIf="selectedCategory?.payment_setting?.member > 0">({{selectedCategory?.payment_setting?.member}}/-)</span>
+
+                      </div>
+                    </div>
+                    <div class="row paymentOption">
+                      <div class="col-sm-4">
+                        <dx-check-box [(ngModel)]="spouseChecked" text="Spouse" style="font-weight: bold;"
+                          (onValueChanged)="calculateTotal()"></dx-check-box>
+                        <span *ngIf="selectedCategory?.payment_setting?.spouse > 0">
+                          ({{selectedCategory?.payment_setting?.spouse}}/-)</span>
+                      </div>
+                    </div>
+                    <div class="row paymentOption">
+                      <div class="col-sm-6">
+                          <dx-check-box  [(ngModel)]="childrenChecked" text="Child" style="font-weight: bold;"
+                          (onValueChanged)="calculateTotal()"></dx-check-box>
+                          <span *ngIf="selectedCategory?.payment_setting?.children > 0">
+                            ({{selectedCategory?.payment_setting?.children}}/-)</span>
+
+                      </div>
+                      <div class="col-sm-6"  *ngIf="childrenChecked">
+                        <dx-number-box label="Total Child"
+                        [labelMode]="labelMode"    [showSpinButtons]="true" min="0" [(ngModel)]="totalChild"
+                        placeholder="No of Child" (onValueChanged)="calculateTotal()">
+                      </dx-number-box>
+                      </div>
+                    </div>
+                    <div class="row paymentOption">
+                      <div class="col-sm-6">
+                        <dx-check-box [(ngModel)]="driverChecked" text="Driver" style="font-weight: bold;"
+                          (onValueChanged)="calculateTotal()"></dx-check-box>
+                        <span
+                          *ngIf="selectedCategory?.payment_setting?.driver > 0">({{selectedCategory?.payment_setting?.driver}}/-)</span>
+                      </div>
+
+                      <div class="col-sm-6" *ngIf="driverChecked">
+                        <dx-number-box [showSpinButtons]="true" min="0" [(ngModel)]="totalDriver"
+                          placeholder="No of Driver" (onValueChanged)="calculateTotal()">
+                        </dx-number-box>
+                      </div>
+                    </div>
+                    <div class="row paymentOption">
+                      <div class="col-sm-6">
+                        <dx-check-box [(ngModel)]="guestChecked" text="Guest" style="font-weight: bold;"
+                          (onValueChanged)="calculateTotal()"></dx-check-box>
+                        <span
+                          *ngIf="selectedCategory?.payment_setting?.guest > 0">({{selectedCategory?.payment_setting?.guest}}/-)</span>
+                      </div>
+                      <div class="col-sm-6" *ngIf="guestChecked">
+                        <dx-number-box [showSpinButtons]="true" min="0" [(ngModel)]="totalGuest"
+                          placeholder="No of Guest" (onValueChanged)="calculateTotal()"> </dx-number-box>
+                      </div>
+
+                    </div>
+
+                    <div class="row paymentOption">
+                      <div class="col-sm-7" style="font-size: 16px;">
+                        Total amount to be paid:
+                      </div>
+                      <div class="col-sm-5" style="font-size: 20px;">
+                        {{eventModel?.TotalAmount ? eventModel?.TotalAmount : 0}}
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+                <div class="row paymentOption">
+                    <div class="col-sm-6" style="font-size: 16px;">
+                      Bkash Number:
+                    </div>
+                    <div class="col-sm-6" style="font-size: 20px;">
+                      <dx-text-box placeholder="Bkash Number" label=" Bkash Number" labelMode="static" [(ngModel)]="eventModel.BkashMobileNo" [showClearButton]="true"> </dx-text-box>
+                    </div>
+                </div>
+                <div class="row paymentOption">
+                  <div class="col-sm-6" style="font-size: 16px;">
+                    Bkash Transection ID:
+                  </div>
+                  <div class="col-sm-6" style="font-size: 20px;">
+                    <dx-text-box placeholder="Bkash Transection ID" [(ngModel)]="eventModel.BkashTransactionId" [showClearButton]="true"> </dx-text-box>
+                  </div>
+
+                </div>
+                <div class="col-sm-12">
+                  <button type="submit" (click)="submit($event)" class="btn btn-primary btn-style mt-3">Submit</button>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-lg-5 cont-details" style="margin-top: 100px;">
+            <div class="row feechart">
+              <div class="col-sm-12 ">
+                <!-- <div class="header">Fee Chart:</div>
+                        <div style="font-size: 20px; margin-bottom: 10px; font-weight: bold;">{{selectedCategory?.name}}</div>
+                        <div style="color: red; font-size: 12px;">*Per Person</div>
+                        <ul *ngIf="selectedCategory">
+                          <li> Member: <span>{{selectedCategory?.payment_setting?.member}}/-</span> </li>
+                          <li> Spouse: <span>{{selectedCategory?.payment_setting?.spouse}}/-</span> </li>
+                          <li> Children/Grand Children: <span>{{selectedCategory?.payment_setting?.children}}/-</span> </li>
+                          <li> Driver: <span>{{selectedCategory?.payment_setting?.driver}}/-</span> </li>
+                          <li> Guest: <span>{{selectedCategory?.payment_setting?.guest}}/-</span> </li>
+                        </ul> -->
+                <div>
+                  <div style="font-size: 18px; font-weight: bold; color: blue; margin-bottom: 30px;">
+                    পারিবারিক মিলনমেলা ও বার্ষিক সাধারন সভা ২০২৩</div>
+
+                  <div style="font-size: 12px;">
+                    <div style="margin-bottom: 10px;color: black;">অত্র ফোরামের গত ০২ ডিসেম্বর ২০২২ এর সাধারন সভার
+                      সিদ্ধান্ত অনুযায়ী -</div>
+                    <div>
+                      <p style="    text-align: justify; font-size: 12px;color: black;">
+                        আগামী ২৪ ফেব্রুয়ারি ২০২৩ শুক্রবার দিনব্যাপী (সকাল ০৯.০০টা থেকে সন্ধ্য ০৬.০০টা পর্যন্ত)
+                        "পারিবারিক মিলনমলা ও বার্ষিক সাধারন সভা ২০২৩"
+                        তিনশ ফিট সড়ক সংলগ্ন পুর্বাচল ক্লাব লিমিটেড-এ অনুষ্ঠিত হবে।
+                        উক্ত অনুষ্ঠানে অংশগ্রহণের জন্য দেশ ও বিদেশে অবস্হানরত ফোরামের
+                        সকল সদস্যকে আহবান করা যাচ্ছে। নিম্নে বর্ণিত চাঁদার ভিত্তিতে পরিবারের
+                        সদস্যগন সহ অংশগ্রহণ করা যাবে।
+                        চাঁদার হার নিম্নরুপঃ- </p>
+                    </div>
+
+
+                    <div class="ulhead">ক্যাটাগরি কঃ- ব্যাচ ১৯৮১ থেকে ২০০৫</div>
+                    <ul>
+                      <li>১. স্পাউস সহ সদস্য - ২,৫০০/-</li>
+                      <li>২. একক সদস্য - ১,৫০০/-</li>
+                    </ul>
+                    <br />
+                    <br />
+                    <div class="ulhead">ক্যাটাগরি খঃ- ব্যাচ ২০০৬ থেকে ২০১৫</div>
+                    <ul>
+                      <li>১. স্পাউস সহ সদস্য - ২,০০০/-</li>
+                      <li>২. একক সদস্য - ১,০০০/-</li>
+                    </ul>
+                    <br />
+                    <br />
+                    <div class="ulhead"> ক্যাটাগরি গঃ- ব্যাচ ২০১৬ থেকে ২০২২</div>
+                    <ul>
+                      <li> ১. স্পাউস সহ সদস্য - ১,০০০/-</li>
+                      <li>২. একক সদস্য - ৫০০/-</li>
+                    </ul>
+
+                    <br />
+                    <br />
+                    <div class="ulhead">সকল ক্যাটাগরিঃ-</div>
+                    <ul>
+                      <li>১. সন্তান/পোষ্য - ৭০০/- প্রতিজন (বয়স ৫ বছর বা তদুর্ধ)</li>
+                      <li>২. গাড়ী চালক - ৫০০/- প্রতিজন</li>
+                      <li>৩. পরিবারের সাথে সংযুক্ত অতিথি - ১,০০০/- প্রতি জন।</li>
+                    </ul>
+
+
+                    <div style="margin-top: 15px;">
+                      ★ - রেজিষ্ট্রেশনের সর্বশেষ সময় - <b>১৮ ফেব্রুয়ারি ২০২৩।</b> <br />
+                      ★- অনলাইনে রেজিষ্ট্রেশন ও পেমেন্ট করতে হবে (শীঘ্রই অনলাইন লিংক জানানো হবে)।<br />
+                      ★ - কোন স্পট রেজিষ্ট্রেশন হবে না।<br />
+                      ★ - স্পটে আসা যাওয়ার জন্য ২টি বাস থাকবে এবং ঢাকা শহরে নির্দিষ্ট দুটি স্হান হতে ভ্যানুতে আসা যাওয়া
+                      করবে।<br />
+                      ★ - বাসে যাতায়াতকারীগন ফরমের নির্ধারিত স্হানে তা উল্লেখ করবেন।<br />
+                      ★ - এই মিলন মেলায় নতুনভাবে অংশগ্রহণকারীগন স্বয়ংক্রিয়ভাবে ফোরামের সদস্য হিসাবে অন্তরভূক্ত হবেন। এ
+                      বিষয়ে সদ্য পাশকৃতদের অংশগ্রহনের জন্য বিশেষভাবে উৎসাহিত করা হচ্ছে।<br />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div   class="row" *ngIf="alreadyRegistered">
+          <!-- <div class="row map-content-9" *ngIf="alreadyRegistered"> -->
+          <!-- <div class="title-big">You already registered this Event</div> -->
+
+          <div class="col-sm-12" id="pdfTable" #pdfTable>
+            <br />
+            <div class="row  cont-details" style="margin-top: 0px;">
+
+              <div class="col-sm-12" style="text-align: center;height:150px;text-align: center;">
+                <img src="../../../../assets/images/culogolightblue.png" style="width: 100px;"  alt="logo" />
+              </div>
+              <div class="col-sm-12">
+                <span style="font-size: 20px; text-align: center;color: #002A5C;">
+                  <div>Chittagong University </div>
+                  <div>Public Administration  Ex Students Forum, Dhaka</div>
+                </span>
+              </div>
+              <div class="col-sm-12" style=" text-align: center;margin-top: 25px;">
+                <span style="font-size: 20px;">Invitation Letter</span>
+              </div>
+              <div class="col-sm-12">
+                <div class="eventName"  style=" text-align: center;margin-top: 25px;" >
+                  "{{eventModel.EventName}}"
+                </div>
+              </div>
+              <div class="col-sm-12" style="text-align: center;">
+                <div style=" margin-bottom: 10px; margin-top: 10px;">
+                  <img src={{memberInfo.ProfilePictureFullUrl}} style="width: 100px;     border-radius: 15px;"  alt="logo" />
+                </div>
+              </div>
+              <div class="col-sm-12 tableView">
+                <table>
+                  <tr>
+                    <td class="event-invite-label">Name</td>
+                    <td class="event-invite-text"> : {{memberInfo.Name}}</td>
+                  </tr>
+                  <tr>
+                    <td class="event-invite-label">Batch No:</td>
+                    <td class="event-invite-text"> : {{memberInfo.UniversityBatch}}</td>
+                  </tr>
+                  <tr>
+                    <td class="event-invite-label">Registraion Id</td>
+                    <td class="event-invite-text"> : {{eventModel.BkashTransactionId}}</td>
+                  </tr>
+                  <tr>
+                    <td class="event-invite-label">Phone Number</td>
+                    <td class="event-invite-text"> : +880{{memberInfo.Mobile}}</td>
+                  </tr>
+                  <tr>
+                    <td class="event-invite-label">Venue</td>
+                    <td class="event-invite-text"> : Purbachal Club Limited</td>
+                  </tr>
+                  <tr *ngIf="eventModel.SpouseCount > 0 ">
+                    <td class="event-invite-label">Spouse: </td>
+                    <td class="event-invite-text"> : {{ eventModel.SpouseCount > 0 ? 'Yes': 'No'}}</td>
+                  </tr>
+                  <tr *ngIf="eventModel.ChildCount > 0 ">
+                    <td class="event-invite-label">Child: </td>
+                    <td class="event-invite-text"> : {{ eventModel.ChildCount}}</td>
+                  </tr>
+                  <tr *ngIf="eventModel.DriverCount > 0 ">
+                    <td class="event-invite-label">Driver: </td>
+                    <td class="event-invite-text"> : {{ eventModel.DriverCount }}</td>
+                  </tr>
+                  <tr *ngIf="eventModel.OtherCount > 0 ">
+                    <td class="event-invite-label">Other Guest: </td>
+                    <td class="event-invite-text"> : {{ eventModel.OtherCount}}</td>
+                  </tr>
+                  <tr>
+                    <td class="event-invite-label">Total Participants</td>
+                    <td class="event-invite-text"> : {{
+                      eventModel.MemberCount + eventModel.SpouseCount +
+                      eventModel.ChildCount +
+                      eventModel.DriverCount +
+                      eventModel.OtherCount
+                      }}</td>
+                  </tr>
+                  <tr>
+                    <td class="event-invite-label">Payment Status</td>
+                    <td class="event-invite-text"> : {{eventModel.IsApprovedFull}}</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-sm-12" style="margin-top: 5px;  margin-bottom: 10px; text-align: right">
+            <button *ngIf="alreadyRegistered" class="btn btn-primary" (click)="downloadAsPDF()">Download</button>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
