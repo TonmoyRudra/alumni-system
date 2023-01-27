@@ -91,4 +91,15 @@ SelectedRegionList = [];
       e.rowElement.bgColor = "#C0FFC0";
     }
   }
+
+  isDialogVisible : boolean =false;
+  EventData={};
+  ShowDetails(EventData){
+    this.EventData = {};
+this.EventData = EventData;
+this.isDialogVisible = true;
+  }
+  closeDetails(){
+    this.isDialogVisible = false;
+  }
 }

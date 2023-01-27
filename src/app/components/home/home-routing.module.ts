@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from 'src/app/shared/components/not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from 'src/app/auth-gaurd/auth.garud';
-
+import { MemberdetailsComponent } from './memberdetails/memberdetails.component';
 const routes: Routes = [
   // {
   //   path: '',
@@ -36,6 +36,11 @@ const routes: Routes = [
   {
     path: 'event',
     component: EventComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'member',
+    component: MemberdetailsComponent,
     canActivate: [AuthGuard],
   },
   // {

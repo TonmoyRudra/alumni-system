@@ -1,0 +1,146 @@
+<div class="inner-banner">
+  <section class="w3l-breadcrumb py-3">
+    <div class="container py-lg-2 py-md-3">
+      <h2 class="title">Member Details</h2>
+    </div>
+  </section>
+</div>
+<!-- banner bottom shape -->
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+    </svg>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+      <!-- {
+        "Name": "Mobashwir Hasan",
+        "UniversityBatch": "Batch 10",
+        "MSSYear": "2020",
+        "Email": "mobashwir.hasan@gmail.com",
+        "Mobile": 1911614074,
+        "WhatsAppp": null,
+        "FacebookId": null,
+        "BloodGroup": null,
+        "Designation": "Director of Operations",
+        "Profession": "Service",
+        "OfficeAddress": "Protik Ruposree, Holding No - 78,  Road No - 12/4,  Block - J,  Building - E1(Lily), Flat - D5, South Banasree. Dhaka - 1219",
+        "PresentAddress": "Protik Ruposree, Holding No - 78,  Road No - 12/4,  Block - J,  Building - E1(Lily), Flat - D5, South Banasree. Dhaka - 1219",
+        "PermanentAddress": "Protik Ruposree, Holding No - 78,  Road No - 12/4,  Block - J,  Building - E1(Lily), Flat - D5, South Banasree. Dhaka - 1219",
+        "SpouseName": null,
+        "NumberOfKids": 0,
+        "MarriageAnniversary": null,
+        "Interest": null,
+        "Achievements": null,
+        "ProfilePicture": "028eaec9-c6cd-4b4a-9725-600f1cb2cd83shakil.JPG",
+        "Id": 13,
+        "IsActive": true,
+        "CreateDate": "2023-01-17T05:45:35.717",
+        "UpdatedDate": "2023-01-17T05:45:35.717",
+        "CreatedBy": 0,
+        "UpdatedBy": 0
+    } -->
+      <table class="detail-table">
+        <tr>
+          <td class="header-label">Name : </td>
+          <td class="detail-label" colspan="4">{{memberInfo.Name}}</td>       
+        </tr>
+        <tr>
+          <td class="header-label">Email : </td>
+          <td class="detail-label" colspan="4">{{memberInfo.Email}}</td>       
+        </tr>
+        <tr>
+          <td class="header-label">Mobile : </td>
+          <td class="detail-label">{{memberInfo.Mobile}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">Blood Group : </td>
+          <td class="detail-label">{{memberInfo.BloodGroup}}</td>
+        </tr>
+        <tr>
+          <td class="header-label">University Batch : </td>
+          <td class="detail-label">{{memberInfo.UniversityBatch}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">Facebook Id : </td>
+          <td class="detail-label">{{memberInfo.FacebookId}}</td>
+        </tr>
+        <tr>
+          <td class="header-label">MSS Year : </td>
+          <td class="detail-label">{{memberInfo.MSSYear}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">WhatsAppp : </td>
+          <td class="detail-label">{{memberInfo.WhatsAppp}}</td>
+        </tr>
+        <tr>
+          <td class="header-label">Present Address : </td>
+          <td class="detail-label" colspan="4">{{memberInfo.PresentAddress}}</td>       
+        </tr>
+        <tr>
+          <td class="header-label">Permanent Address : </td>
+          <td class="detail-label" colspan="4">{{memberInfo.PermanentAddress}}</td>       
+        </tr>
+        <tr>
+          <td class="header-label">Office Address : </td>
+          <td class="detail-label" colspan="4">{{memberInfo.OfficeAddress}}</td>       
+        </tr>
+        <tr>
+          <td class="header-label">Profession : </td>
+          <td class="detail-label">{{memberInfo.Profession}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">Designation : </td>
+          <td class="detail-label">{{memberInfo.Designation}}</td>
+        </tr>
+        <tr>
+          <td class="header-label">Spouse Name : </td>
+          <td class="detail-label">{{memberInfo.SpouseName}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">Marriage Anniversary : </td>
+          <td class="detail-label">{{memberInfo.MarriageAnniversary | date:"dd-MMM-yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td class="header-label">Number Of Kids : </td>
+          <td class="detail-label">{{memberInfo.NumberOfKids}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label"></td>
+          <td class="detail-label"></td>
+        </tr>
+        <tr>
+          <td class="header-label">Interest : </td>
+          <td class="detail-label" colspan="4">{{memberInfo.Interest}}</td>       
+        </tr>
+        <tr>
+          <td class="header-label">Achievements : </td>
+          <td class="detail-label" colspan="4">{{memberInfo.Achievements}}</td>       
+        </tr>
+
+        <tr>
+          <td class="header-label">Created By : </td>
+          <td class="detail-label">{{memberInfo.CreatedBy}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">Create Date : </td>
+          <td class="detail-label">{{memberInfo.CreateDate | date:"dd-MMM-yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td class="header-label">Updated By : </td>
+          <td class="detail-label">{{memberInfo.UpdatedBy}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">Updated Date : </td>
+          <td class="detail-label">{{memberInfo.UpdatedDate | date:"dd-MMM-yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td class="header-label">Id : </td>
+          <td class="detail-label">{{memberInfo.Id}}</td>
+          <td class="gap-column"></td>
+          <td class="header-label">Is Active : </td>
+          <td class="detail-label">{{memberInfo.IsActive}}</td>
+        </tr>
+      </table>
+        
+    </div>
+    <div class="col-md-2"></div>
+  </div>

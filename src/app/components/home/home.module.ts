@@ -9,6 +9,7 @@ import { DevExtremeModule } from 'devextreme-angular';
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { EventComponent } from './event/event.component';
+import { MemberdetailsComponent } from './memberdetails/memberdetails.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { EventComponent } from './event/event.component';
     HomeComponent,
     RegistrationComponent,
     LoginComponent,
-    EventComponent
+    EventComponent,
+    MemberdetailsComponent
   ],
   imports: [
     CommonModule,

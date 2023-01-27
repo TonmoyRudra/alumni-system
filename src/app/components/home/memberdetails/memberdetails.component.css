@@ -1,0 +1,25 @@
+.detail-table{
+    border-collapse: separate !important; /* allow spacing between cell borders */
+    border-spacing: 0 15px !important;
+}
+.header-label{
+    /* font-weight: bold !important; */
+    width: 190px !important;
+
+
+    font-size: 18px;
+    font-weight: 600;   
+    color: var(--heading-color);
+}
+.gap-column{
+    width: 20px;
+}
+.detail-label{    
+    width: 300px !important;
+
+    
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--font-color);
+}
+

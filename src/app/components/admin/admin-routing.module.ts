@@ -19,6 +19,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'home',
+    component: AdmindashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'logout',
+    component: AdmindashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'eventtransactionapprove',
     component: EventtransactionapproveComponent,
     canActivate: [AuthGuard],
