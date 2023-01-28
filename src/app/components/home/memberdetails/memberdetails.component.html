@@ -46,14 +46,23 @@
         "CreatedBy": 0,
         "UpdatedBy": 0
     } -->
+    <div class="row" style="text-align: center; margin-top: 10px;">
+      <div class="col-sm-12">
+        <img  class="profile-pic"  [src]="memberInfo.ProfilePictureFullUrl">
+      </div>
+      <!-- <div class="p-image">
+        <i class="fa fa-camera upload-button"></i>
+         <input class="file-upload" type="file" accept="image/*"  (change)="filePickerData($event)" />
+      </div> -->
+    </div>
       <table class="detail-table">
         <tr>
           <td class="header-label">Name : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Name}}</td>       
+          <td class="detail-label" colspan="4">{{memberInfo.Name}}</td>
         </tr>
         <tr>
           <td class="header-label">Email : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Email}}</td>       
+          <td class="detail-label" colspan="4">{{memberInfo.Email}}</td>
         </tr>
         <tr>
           <td class="header-label">Mobile : </td>
@@ -78,15 +87,15 @@
         </tr>
         <tr>
           <td class="header-label">Present Address : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.PresentAddress}}</td>       
+          <td class="detail-label" colspan="4">{{memberInfo.PresentAddress}}</td>
         </tr>
         <tr>
           <td class="header-label">Permanent Address : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.PermanentAddress}}</td>       
+          <td class="detail-label" colspan="4">{{memberInfo.PermanentAddress}}</td>
         </tr>
         <tr>
           <td class="header-label">Office Address : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.OfficeAddress}}</td>       
+          <td class="detail-label" colspan="4">{{memberInfo.OfficeAddress}}</td>
         </tr>
         <tr>
           <td class="header-label">Profession : </td>
@@ -111,11 +120,11 @@
         </tr>
         <tr>
           <td class="header-label">Interest : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Interest}}</td>       
+          <td class="detail-label" colspan="4">{{memberInfo.Interest}}</td>
         </tr>
         <tr>
           <td class="header-label">Achievements : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Achievements}}</td>       
+          <td class="detail-label" colspan="4">{{memberInfo.Achievements}}</td>
         </tr>
 
         <tr>
@@ -140,7 +149,7 @@
           <td class="detail-label">{{memberInfo.IsActive}}</td>
         </tr>
       </table>
-        
+
     </div>
     <div class="col-md-2"></div>
   </div>
