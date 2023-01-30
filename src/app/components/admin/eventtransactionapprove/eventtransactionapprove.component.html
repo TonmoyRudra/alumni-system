@@ -1,8 +1,8 @@
 <h3>Event Subscription Approvals</h3>
 
 
-
-<dx-data-grid id="gridContainer" [dataSource]="RegionList" keyExpr="Id" [columnHidingEnabled]="false"
+<div style="height: calc(100%);overflow: scroll;">
+  <dx-data-grid id="gridContainer" [dataSource]="RegionList" keyExpr="Id" [columnHidingEnabled]="false"
   [allowColumnReordering]="true" [allowColumnResizing]="true" [showBorders]="true"
   (onRowPrepared)="onRowPrepared($event)" [showRowLines]="true" [scrolling]="{ showScrollbar: 'always' }">
 
@@ -172,7 +172,7 @@
           </div>
         </div>
 
-<!-- 
+<!--
 
         <div class="row" style="margin-top:10px">
           <div class="col-xs-4"></div>
@@ -188,3 +188,4 @@
 
   </div>
 </dx-popup>
+</div>

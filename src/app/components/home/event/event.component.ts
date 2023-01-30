@@ -22,6 +22,7 @@ export class EventComponent implements OnInit {
   eventModel: IEvent = {
     EventId: 0,
     EventName: '',
+    EventPlace: '',
     MemberId: '',
     Name: '',
     Mobile: '',
@@ -63,17 +64,20 @@ export class EventComponent implements OnInit {
   totalGuest: number ;
   sessionUser: any;
   memberInfo: any;
-  alreadyRegistered: boolean;
+  alreadyRegistered: boolean = null;
 
   imagetest ;
   labelMode = 'static';
   stylingMode = 'filled';
+  bKashNumber = '01715500243, 01716498248, 01610009090';
+  nagadNumber = '01715500243, 01716498248'
+  showView: boolean = false;
   constructor(public autenticationService: AutenticationService,
     public globalService :GlobalService,
     public memberService : MemberService,
     public router: Router) {
     this.sessionUser = this.autenticationService.getSessionUser();
-
+    this.alreadyRegistered = null;
 
   }
 
@@ -81,6 +85,7 @@ export class EventComponent implements OnInit {
 
     this.eventModel.Id = 0; // Static
     this.eventModel.EventName = "Family Reunion and Annual General Meeting 2023"
+    this.eventModel.EventPlace = "Purbachal Club Limited"
     this.getmemberById(this.sessionUser.MemberId);
     this.categoryList = [{
       id: 1,
@@ -202,9 +207,11 @@ export class EventComponent implements OnInit {
       if(result != null){
         this.alreadyRegistered = false;
         const index = result.findIndex(s => s.EventId == eventId);
+        this.showView = true;
         if(index != -1){
           if(result[index].EventId == this.eventModel.Id){
             this.alreadyRegistered = true;
+
 
             //this.memberInfo result[index]
             this.eventModel = result[index];
@@ -226,24 +233,20 @@ export class EventComponent implements OnInit {
   @ViewChild('pdfTable') pdfTable: ElementRef;
 
   public downloadAsPDF() {
-    // debugger;
-    // const doc = new jsPDF();
 
-    // const pdfTable = this.pdfTable.nativeElement;
+    // // Open Print Preview
+    //   var headstr = "<html><head><title></title></head><body>";
+    //   var footstr = "</body>";
+    //   var newstr = document.getElementById("pdfTable").innerHTML;
+    //   var oldstr = document.body.innerHTML;
+    //   document.body.innerHTML = headstr + newstr + footstr;
+    //   window.print();
+    //   document.body.innerHTML = oldstr;
+    //   return false;
 
-    // var html = htmlToPdfmake(pdfTable.innerHTML);
-
-    // const documentDefinition = { content: html };
-    // pdfMake.createPdf(documentDefinition).download();
-
-      var headstr = "<html><head><title></title></head><body>";
-      var footstr = "</body>";
-      var newstr = document.getElementById("pdfTable").innerHTML;
-      var oldstr = document.body.innerHTML;
-      document.body.innerHTML = headstr + newstr + footstr;
-      window.print();
-      document.body.innerHTML = oldstr;
-      return false;
+    let  url = this.globalService.api_BaseURL + '/Download/Download?memberId=' + this.memberInfo.Id + "&transactionNo=" + this.eventModel.BkashTransactionId;
+      // this.router.navigateByUrl(url)
+      window.open(url, '_blank');
 
 
   }

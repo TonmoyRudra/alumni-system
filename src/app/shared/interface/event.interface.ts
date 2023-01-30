@@ -1,6 +1,7 @@
 export interface IEvent {
   EventId: number;
   EventName: string;
+  EventPlace: String;
   MemberId: string;
   Name: string;
   Mobile: string;

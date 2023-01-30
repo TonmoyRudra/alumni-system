@@ -1,9 +1,12 @@
 export interface IRegistrationDto {
   "Name": "string",
+  "FatherName": "string",
+  "Mothername": "string",
+  "BSSYear": "string",
   "UniversityBatch": "string",
   "MSSYear": "string",
   "Email": "string",
-  "Mobile": 0,
+  "Mobile": "string",
   "WhatsAppp": "string",
   "FacebookId": "string",
   "BloodGroup": "string",

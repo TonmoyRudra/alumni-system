@@ -30,54 +30,50 @@
                <input class="file-upload" type="file" accept="image/*"  (change)="filePickerData($event)" />
             </div>
           </div>
-          <dx-form id="form" [(formData)]="studentFormData" labelMode="floating">
+          <dx-form id="form" [(formData)]="registrationFormData" labelMode="floating">
             <dxi-item itemType="group" cssClass="first-group" [colCount]="4">
               <!-- <dxi-item>
                 <div class="form-avatar"></div>
               </dxi-item> -->
 
               <dxi-item itemType="group" [colSpan]="3">
-                <dxi-item dataField="Name">
+                <dxi-item dataField="Name" >
                   <dxi-validation-rule type="required" message="Name is required"> </dxi-validation-rule>
                 </dxi-item>
                 <dxi-item dataField="Email">
                   <dxi-validation-rule type="required" message="Email is required"> </dxi-validation-rule>
                   <dxi-validation-rule type="email" message="Email is invalide"> </dxi-validation-rule>
-
                 </dxi-item>
-                <dxi-item dataField="Mobile" [label]="{ text: 'Mobile'}" >
+                <dxi-item dataField="Mobile" [label]="{ text: 'Mobile'}"  [editorOptions]="{ maxLength: 11 }">
                   <dxi-validation-rule type="required" message="Phone is required"> </dxi-validation-rule>
                 </dxi-item>
-                <!-- <dxi-item
-                      dataField="BirthDate"
-                      editorType="dxDateBox"
-                      [editorOptions]="{ width: '100%' }"
-                    ></dxi-item> -->
               </dxi-item>
+
             </dxi-item>
             <dxi-item itemType="group" cssClass="second-group" [colCount]="2">
               <dxi-item itemType="group">
+                <dxi-item dataField="FatherName"></dxi-item>
+                <dxi-item dataField="MotherName"></dxi-item>
                 <dxi-item dataField="UniversityBatch" editorType="dxSelectBox"
                   [editorOptions]="{ items: UniversityBatchList, value: '' }">
                   <dxi-validation-rule type="required" message=" Required"> </dxi-validation-rule>
                 </dxi-item>
-                <dxi-item dataField="MSSYear" editorType="dxSelectBox"
-                  [editorOptions]="{ items: MSSYearList, value: '' }">
-                  <dxi-validation-rule type="required" message=" Required"> </dxi-validation-rule>
+                <dxi-item dataField="BSSYear" editorType="dxSelectBox" [label]="{ text: 'BSS Year'}"
+                  [editorOptions]="{ items: BSSYearList, value: '' }">
                 </dxi-item>
-                <dxi-item dataField="BloodGroup"></dxi-item>
+                <dxi-item dataField="MSSYear" editorType="dxSelectBox" [label]="{ text: 'MSS Year'}"
+                  [editorOptions]="{ items: MSSYearList, value: '' }">
+                </dxi-item>
               </dxi-item>
               <dxi-item itemType="group">
+                <dxi-item dataField="BloodGroup"  editorType="dxSelectBox"
+                [editorOptions]="{ items: bloodGroupList, value: '' }">
+                </dxi-item>
                 <dxi-item dataField="FacebookId"></dxi-item>
                 <dxi-item dataField="WhatsAppp"></dxi-item>
               </dxi-item>
-              <!-- <dxi-item
-                    dataField="Notes"
-                    [colSpan]="2"
-                    editorType="dxTextArea"
-                    [editorOptions]="{ height: 140 }"
-                  ></dxi-item> -->
             </dxi-item>
+
             <dxi-item itemType="group" cssClass="second-group" [colCount]="2">
               <dxi-item itemType="group">
                 <dxi-item dataField="Profession">
