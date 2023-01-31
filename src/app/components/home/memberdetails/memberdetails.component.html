@@ -15,11 +15,11 @@
 </div>
 
 
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
 
-      <!-- {
+    <!-- {
         "Name": "Mobashwir Hasan",
         "UniversityBatch": "Batch 10",
         "MSSYear": "2020",
@@ -48,119 +48,156 @@
     } -->
     <div class="row" style="text-align: center; margin-top: 10px;">
       <div class="col-sm-12">
-        <img  class="profile-pic"  [src]="memberInfo.ProfilePictureFullUrl">
-      </div>
-      <!-- <div class="p-image">
+      <div style="margin: auto !important;">
+        <img class="profile-pic" [src]="memberInfo.ProfilePictureFullUrl" style="margin-right: 10px;">
         <i class="fa fa-camera upload-button"></i>
-         <input class="file-upload" type="file" accept="image/*"  (change)="filePickerData($event)" />
-      </div> -->
+        <input class="file-upload" type="file" accept="image/*" (change)="filePickerData($event)" />
+      </div>
     </div>
-      <table class="detail-table">
-        <tr>
-          <td class="header-label">Name : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Name}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Email : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Email}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Father Name : </td>
-          <td class="detail-label">{{memberInfo.FatherName}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Mother Name: </td>
-          <td class="detail-label">{{memberInfo.Mothername}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Mobile : </td>
-          <td class="detail-label">{{memberInfo.Mobile}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Blood Group : </td>
-          <td class="detail-label">{{memberInfo.BloodGroup}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">University Batch : </td>
-          <td class="detail-label">{{memberInfo.UniversityBatch}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Facebook Id : </td>
-          <td class="detail-label">{{memberInfo.FacebookId}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">MSS Year : </td>
-          <td class="detail-label">{{memberInfo.MSSYear}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">BSS Year : </td>
-          <td class="detail-label">{{memberInfo.BSSYear}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">WhatsAppp : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.WhatsAppp}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Present Address : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.PresentAddress}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Permanent Address : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.PermanentAddress}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Office Address : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.OfficeAddress}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Profession : </td>
-          <td class="detail-label">{{memberInfo.Profession}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Designation : </td>
-          <td class="detail-label">{{memberInfo.Designation}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Spouse Name : </td>
-          <td class="detail-label">{{memberInfo.SpouseName}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Marriage Anniversary : </td>
-          <td class="detail-label">{{memberInfo.MarriageAnniversary | date:"dd-MMM-yyyy hh:mm a"}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Number Of Kids : </td>
-          <td class="detail-label">{{memberInfo.NumberOfKids}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label"></td>
-          <td class="detail-label"></td>
-        </tr>
-        <tr>
-          <td class="header-label">Interest : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Interest}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Achievements : </td>
-          <td class="detail-label" colspan="4">{{memberInfo.Achievements}}</td>
-        </tr>
-
-        <tr>
-          <td class="header-label">Created By : </td>
-          <td class="detail-label">{{memberInfo.CreatedBy}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Create Date : </td>
-          <td class="detail-label">{{memberInfo.CreateDate | date:"dd-MMM-yyyy hh:mm a"}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Updated By : </td>
-          <td class="detail-label">{{memberInfo.UpdatedBy}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Updated Date : </td>
-          <td class="detail-label">{{memberInfo.UpdatedDate | date:"dd-MMM-yyyy hh:mm a"}}</td>
-        </tr>
-        <tr>
-          <td class="header-label">Id : </td>
-          <td class="detail-label">{{memberInfo.Id}}</td>
-          <td class="gap-column"></td>
-          <td class="header-label">Is Active : </td>
-          <td class="detail-label">{{memberInfo.IsActive}}</td>
-        </tr>
-      </table>
-
     </div>
-    <div class="col-md-2"></div>
+    <table class="detail-table">
+       <tr>
+        <td class="header-label">Name : </td>
+        <td class="detail-label" colspan="4">{{memberInfo.Name}}</td>
+      </tr>
+      <tr>
+        <td class="header-label">Email : </td>
+        <td class="detail-label" colspan="4">{{memberInfo.Email}}</td>
+      </tr>
+      <tr>
+        <td class="header-label">Mobile : </td>
+        <td class="detail-label">{{memberInfo.Mobile}}</td>
+      </tr> 
+      <tr>
+        <td class="header-label">Father Name : </td>
+        <td class="detail-label"><dx-text-box placeholder="Father Name" [(ngModel)]="memberInfo.FatherName">
+          </dx-text-box></td>
+        <td class="gap-column"></td>
+        <td class="header-label">Mother Name: </td>
+        <td class="detail-label"><dx-text-box placeholder="Mother Name" [(ngModel)]="memberInfo.Mothername">
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td class="header-label">University Batch : </td>
+        <td class="detail-label">
+          <dx-select-box placeholder="University Batch" [items]="UniversityBatchList"
+            [(value)]="memberInfo.UniversityBatch"></dx-select-box>
+        </td>
+        <td class="gap-column"></td>
+        <td class="header-label">Blood Group : </td>
+        <td class="detail-label">
+          <dx-select-box placeholder="Blood Group" [items]="bloodGroupList"
+            [(value)]="memberInfo.BloodGroup"></dx-select-box>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="header-label">MSS Year : </td>
+        <td class="detail-label">
+          <dx-select-box placeholder="MSS Year" [items]="MSSYearList" [(value)]="memberInfo.MSSYear"></dx-select-box>
+        </td>
+        <td class="gap-column"></td>
+        <td class="header-label">BSS Year : </td>
+        <td class="detail-label">
+          <dx-select-box placeholder="BSS Year" [items]="BSSYearList" [(value)]="memberInfo.BSSYear"></dx-select-box>
+        </td>
+      </tr>
+      <tr>
+        <td class="header-label">WhatsAppp : </td>
+        <td class="detail-label"><dx-text-box placeholder="WhatsAppp" [(ngModel)]="memberInfo.WhatsAppp">
+          </dx-text-box></td>
+        <td class="gap-column"></td>
+        <td class="header-label">Facebook Id : </td>
+        <td class="detail-label"><dx-text-box placeholder="Facebook Id" [(ngModel)]="memberInfo.FacebookId">
+
+
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td class="header-label">Present Address : </td>
+        <td class="detail-label" colspan="4"><dx-text-box placeholder="Present Address"
+            [(ngModel)]="memberInfo.PresentAddress">
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td class="header-label">Permanent Address : </td>
+        <td class="detail-label" colspan="4"><dx-text-box placeholder="Permanent Address"
+            [(ngModel)]="memberInfo.PermanentAddress">
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td class="header-label">Office Address : </td>
+        <td class="detail-label" colspan="4"><dx-text-box placeholder="Office Address"
+            [(ngModel)]="memberInfo.OfficeAddress">
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td class="header-label">Profession : </td>
+        <td class="detail-label"><dx-text-box placeholder="Profession" [(ngModel)]="memberInfo.Profession">
+          </dx-text-box></td>
+        <td class="gap-column"></td>
+        <td class="header-label">Designation : </td>
+        <td class="detail-label"><dx-text-box placeholder="Designation" [(ngModel)]="memberInfo.Designation">
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td class="header-label">Spouse Name : </td>
+        <td class="detail-label"><dx-text-box placeholder="Spouse Name" [(ngModel)]="memberInfo.SpouseName">
+          </dx-text-box></td>
+        <td class="gap-column"></td>
+        <td class="header-label">Marriage Anniversary : </td>
+        <td class="detail-label">
+          <dx-date-box [(value)]="memberInfo.MarriageAnniversary" displayFormat="dd/MMM/yyyy"></dx-date-box>
+        </td>
+      </tr>
+      <tr>
+        <td class="header-label">Number Of Kids : </td>
+        <td class="detail-label"><dx-text-box placeholder="Number Of Kids" [(ngModel)]="memberInfo.NumberOfKids">
+          </dx-text-box></td>
+        <td class="gap-column"></td>
+        <td class="header-label"></td>
+        <td class="detail-label"></td>
+      </tr>
+      <tr>
+        <td class="header-label">Interest : </td>
+        <td class="detail-label" colspan="4"><dx-text-box placeholder="Interest" [(ngModel)]="memberInfo.Interest">
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td class="header-label">Achievements : </td>
+        <td class="detail-label" colspan="4"><dx-text-box placeholder="Achievements"
+            [(ngModel)]="memberInfo.Achievements">
+          </dx-text-box></td>
+      </tr>
+      <tr>
+        <td colspan="5"> <button class="btn btn-primary" style="width: 100%;" (click)="updateProfile()">Update Profile
+            Details</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="header-label">Created By : </td>
+        <td class="detail-label">{{memberInfo.CreatedBy}}</td>
+        <td class="gap-column"></td>
+        <td class="header-label">Create Date : </td>
+        <td class="detail-label">{{memberInfo.CreateDate | date:"dd-MMM-yyyy hh:mm a"}}</td>
+      </tr>
+      <tr>
+        <td class="header-label">Updated By : </td>
+        <td class="detail-label">{{memberInfo.UpdatedBy}}</td>
+        <td class="gap-column"></td>
+        <td class="header-label">Updated Date : </td>
+        <td class="detail-label">{{memberInfo.UpdatedDate | date:"dd-MMM-yyyy hh:mm a"}}</td>
+      </tr>
+      <tr>
+        <td class="header-label">Id : </td>
+        <td class="detail-label">{{memberInfo.Id}}</td>
+        <td class="gap-column"></td>
+        <td class="header-label">Is Active : </td>
+        <td class="detail-label">{{memberInfo.IsActive}}</td>
+      </tr>
+
+    </table>
+
   </div>
+  <div class="col-md-2"></div>
+</div>

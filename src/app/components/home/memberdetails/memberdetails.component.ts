@@ -5,6 +5,8 @@ import { AutenticationService } from './../../../shared/service/autentication/au
 import { Component, OnInit } from '@angular/core';
 import { IEvent } from 'src/app/shared/interface/event.interface';
 import { Router } from '@angular/router';
+import { HttpService } from '../../../shared/service/http/http.service';
+import notify from 'devextreme/ui/notify';
 
 import { ViewChild, ElementRef } from '@angular/core';
 import { jsPDF } from "jspdf";
@@ -25,15 +27,43 @@ export class MemberdetailsComponent implements OnInit {
   uploadedFilePath: any;
   fileData: File;
 
+  UniversityBatchList: any[] = [];
+  MSSYearList: any[] = [];
+  BSSYearList: any[] = [];
+  bloodGroupList: string[] = [];
   constructor(public autenticationService: AutenticationService,
     public globalService :GlobalService,
     public memberService : MemberService,
-    public router: Router) {
+    public router: Router, public http: HttpService) {
     this.sessionUser = this.autenticationService.getSessionUser();
 
 
+    this.bloodGroupList = [
+      'A+', 'A-','B+', 'B-','O+','O-','AB+', 'AB-',
+    ]
+    this.getUniversityBatch();
+    this.getMSSYear();
+    this.getBSSYear();
+  }
+  getUniversityBatch() {
+    for (let index = 1; index < 61; index++) {
+      this.UniversityBatchList.push('Batch ' + index.toString());
+    }
+    return this.UniversityBatchList;
+  }
+  getMSSYear() {
+    for (let index = 1970; index < new Date().getFullYear() + 1; index++) {
+      this.MSSYearList.push(index.toString());
+    }
+    return this.MSSYearList;
   }
 
+  getBSSYear() {
+    for (let index = 1970; index < new Date().getFullYear() + 1; index++) {
+      this.BSSYearList.push(index.toString());
+    }
+    return this.BSSYearList;
+  }
   ngOnInit(): void {
     $(".upload-button").on('click', function () {
       $(".file-upload").click();
@@ -44,6 +74,7 @@ export class MemberdetailsComponent implements OnInit {
 
 
   getmemberById(id){
+    this.memberInfo = {};
     this.memberService.getMemberById(id).subscribe(result => {
       if(result != null){
         this.memberInfo = result;
@@ -70,22 +101,43 @@ export class MemberdetailsComponent implements OnInit {
       reader.readAsDataURL(target.files[0]); // bind the picked image on a image src;
       this.fileData = target.files[0];
       console.log(target.files[0]);
-      //this.uploadFile(this.fileData);
+      this.uploadFile(this.fileData);
     }
   }
 
   uploadFile(fileData) {
+    this.globalService.showSpinner(true);
     this.memberService.uploadFile(fileData).subscribe(result => {
+      this.globalService.showSpinner(false);
       console.log(result);
       this.uploadedFilePath = result;
-      //this.registration();
+      this.memberInfo.ProfilePicture = result;
+      this.updateProfile();
     }, err => {
-      console.log(err);
       this.globalService.showSpinner(false);
+      console.log(err);      
     })
   }
+  updateProfile(){
+    
+    this.globalService.showSpinner(true);
+    this.http.post("/Member/Update", this.memberInfo)
+      .subscribe(
+        d => {
+          
+          this.globalService.showSpinner(false);
+          notify("Profile Details updated", 'success', 2000);
+          this.getmemberById(this.sessionUser.MemberId);
 
-
+        },
+        e => {
+          
+          this.globalService.showSpinner(false);
+          console.log(e);
+          notify('Something wrong. Data failed to load.', 'error', 2000);
+        }
+      );
+  }
 
 }
 
