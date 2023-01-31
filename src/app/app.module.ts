@@ -13,6 +13,8 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { DevExtremeModule } from './shared/modules/devExtreme.module';
 import { SharedModule } from './shared/modules/share.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,

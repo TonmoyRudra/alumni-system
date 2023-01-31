@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   loginUser: any;
 
-  constructor(public autenticationService : AutenticationService) { }
+  constructor(public autenticationService : AutenticationService,
+     ) { }
 
   ngOnInit(): void {
-    this.loginUser = this.autenticationService.getSessionUser();
+
   }
+
 }
