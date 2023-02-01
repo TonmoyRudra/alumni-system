@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   loginUser: any;
-
+  isNoticeDialogVisible: boolean;
+  bKashNumber = '01715500243, 01716498248, 01610009090';
+  nagadNumber = '01715500243, 01716498248'
+    // DX Scroll View Config
+    scrollByContent = true;
+    scrollByThumb = true;
+    scrollbarMode: string = 'always';
   constructor(public autenticationService : AutenticationService,
      ) { }
 
@@ -15,4 +21,7 @@ export class HomeComponent implements OnInit {
 
   }
 
+  showNotice(){
+    this.isNoticeDialogVisible = true;
+  }
 }

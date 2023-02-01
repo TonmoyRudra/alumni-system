@@ -1,5 +1,10 @@
 <!-- main-slider -->
-<section class="w3l-main-slider" id="home">
+<section class="w3l-main-slider" id="home" style="padding-top: 7%;">
+  <marquee id='scroll_notice'  onMouseOver="document.getElementById('scroll_notice').stop();"
+   onMouseOut="document.getElementById('scroll_notice').start();"
+   scrollamount="8">
+    <div (click)="showNotice()" class="marDiv">পারিবারিক মিলনমেলা ও বার্ষিক সাধারন সভা ২০২৩। আগামী ২৪ ফেব্রুয়ারি ২০২৩ শুক্রবার দিনব্যাপী (সকাল ০৯.০০টা থেকে সন্ধ্য ০৬.০০টা পর্যন্ত) <span style="text-decoration: underline;"> read more..</span></div>
+  </marquee>
   <div class="companies20-content">
 
       <div class=" ">
@@ -22,6 +27,116 @@
       </div>
   </div>
 </section>
+
+<div>
+  <!-- Notice -->
+  <dx-popup class="popup"    [showTitle]="true" title="Notice" [dragEnabled]="true"
+  [closeOnOutsideClick]="false" [(visible)]="isNoticeDialogVisible">
+
+    <dx-scroll-view #scrollView id="scrollview"
+    [scrollByContent]="scrollByContent"
+    [scrollByThumb]="scrollByThumb"
+    [showScrollbar]="scrollbarMode">
+    <div class="row feechart">
+      <div class="col-sm-12 ">
+        <!-- <div class="header">Fee Chart:</div>
+                <div style="font-size: 20px; margin-bottom: 10px; font-weight: bold;">{{selectedCategory?.name}}</div>
+                <div style="color: red; font-size: 12px;">*Per Person</div>
+                <ul *ngIf="selectedCategory">
+                  <li> Member: <span>{{selectedCategory?.payment_setting?.member}}/-</span> </li>
+                  <li> Spouse: <span>{{selectedCategory?.payment_setting?.spouse}}/-</span> </li>
+                  <li> Children/Grand Children: <span>{{selectedCategory?.payment_setting?.children}}/-</span> </li>
+                  <li> Driver: <span>{{selectedCategory?.payment_setting?.driver}}/-</span> </li>
+                  <li> Guest: <span>{{selectedCategory?.payment_setting?.guest}}/-</span> </li>
+                </ul> -->
+        <div>
+          <div style="font-size: 18px; font-weight: bold; color: blue; margin-bottom: 30px;">
+            পারিবারিক মিলনমেলা ও বার্ষিক সাধারন সভা ২০২৩</div>
+
+          <div style="font-size: 12px;">
+            <div style="margin-bottom: 10px;color: black;">অত্র ফোরামের গত ০২ ডিসেম্বর ২০২২ এর সাধারন সভার
+              সিদ্ধান্ত অনুযায়ী -</div>
+            <div>
+              <p style="    text-align: justify; font-size: 12px;color: black;">
+                আগামী ২৪ ফেব্রুয়ারি ২০২৩ শুক্রবার দিনব্যাপী (সকাল ০৯.০০টা থেকে সন্ধ্য ০৬.০০টা পর্যন্ত)
+                "পারিবারিক মিলনমলা ও বার্ষিক সাধারন সভা ২০২৩"
+                তিনশ ফিট সড়ক সংলগ্ন পুর্বাচল ক্লাব লিমিটেড-এ অনুষ্ঠিত হবে।
+                উক্ত অনুষ্ঠানে অংশগ্রহণের জন্য দেশ ও বিদেশে অবস্হানরত ফোরামের
+                সকল সদস্যকে আহবান করা যাচ্ছে। নিম্নে বর্ণিত চাঁদার ভিত্তিতে পরিবারের
+                সদস্যগন সহ অংশগ্রহণ করা যাবে।
+                চাঁদার হার নিম্নরুপঃ- </p>
+            </div>
+
+
+            <div class="ulhead">ক্যাটাগরি কঃ- ব্যাচ ১৯৮১ থেকে ২০০৫</div>
+            <ul>
+              <li>১. স্পাউস সহ সদস্য - ২,৫০০/-</li>
+              <li>২. একক সদস্য - ১,৫০০/-</li>
+            </ul>
+            <br />
+            <br />
+            <div class="ulhead">ক্যাটাগরি খঃ- ব্যাচ ২০০৬ থেকে ২০১৫</div>
+            <ul>
+              <li>১. স্পাউস সহ সদস্য - ২,০০০/-</li>
+              <li>২. একক সদস্য - ১,০০০/-</li>
+            </ul>
+            <br />
+            <br />
+            <div class="ulhead"> ক্যাটাগরি গঃ- ব্যাচ ২০১৬ থেকে ২০২২</div>
+            <ul>
+              <li> ১. স্পাউস সহ সদস্য - ১,০০০/-</li>
+              <li>২. একক সদস্য - ৫০০/-</li>
+            </ul>
+
+            <br />
+            <br />
+            <div class="ulhead">সকল ক্যাটাগরিঃ-</div>
+            <ul>
+              <li>১. সন্তান/পোষ্য - ৭০০/- প্রতিজন (বয়স ৫ বছর বা তদুর্ধ)</li>
+              <li>২. গাড়ী চালক - ৫০০/- প্রতিজন</li>
+              <li>৩. পরিবারের সাথে সংযুক্ত অতিথি - ১,০০০/- প্রতি জন।</li>
+            </ul>
+
+
+            <div style="margin-top: 15px;">
+              ★ - রেজিষ্ট্রেশনের সর্বশেষ সময় - <b>১৮ ফেব্রুয়ারি ২০২৩।</b> <br />
+              ★- অনলাইনে রেজিষ্ট্রেশন ও পেমেন্ট করতে হবে (শীঘ্রই অনলাইন লিংক জানানো হবে)।<br />
+              ★ - কোন স্পট রেজিষ্ট্রেশন হবে না।<br />
+              ★ - স্পটে আসা যাওয়ার জন্য ২টি বাস থাকবে এবং ঢাকা শহরে নির্দিষ্ট দুটি স্হান হতে ভ্যানুতে আসা যাওয়া
+              করবে।<br />
+              ★ - বাসে যাতায়াতকারীগন ফরমের নির্ধারিত স্হানে তা উল্লেখ করবেন।<br />
+              ★ - এই মিলন মেলায় নতুনভাবে অংশগ্রহণকারীগন স্বয়ংক্রিয়ভাবে ফোরামের সদস্য হিসাবে অন্তরভূক্ত হবেন। এ
+              বিষয়ে সদ্য পাশকৃতদের অংশগ্রহনের জন্য বিশেষভাবে উৎসাহিত করা হচ্ছে।<br />
+            </div>
+
+            <div style="margin-top: 38px;">
+              <div class="ulhead" style="color: #17a2b8; font-size: 15px;text-decoration: underline;">
+                অনলাইনে (বিকাশ কিংবা নগদে)  পেমেন্ট করার নিয়মাবলীঃ
+              </div>
+              <ul>
+                <li style="color: var(--pink); font-size: 12px;"> <img src="../../../../assets/images/bKashLogo.png" style="width: 50px;"/>
+                  <span style="    position: relative; top: 1px; left: 8px;font-weight: 800;">{{bKashNumber}}</span>  </li>
+                <li style="color: var(--primary-color); font-size: 12px;"><img src="../../../../assets/images/nagadLogo.png" style="width: 50px;"/>
+                <span style="    position: relative; top: 4px; left: 5px;font-weight: 800;"> {{nagadNumber}} </span> </li>
+              </ul>
+              <div style="margin-top: 10px ; text-align: justify;">
+                প্রথমে উল্লেখিত যেকোনো একটি বিকাশ কিংবা নগদ নম্বরে টাকা
+                পাঠিয়ে রেফারেন্স নাম্বারটি নিচে রেফারেন্স বক্সে লিখুন, এবং সাবমিট করুন।
+                আপনার পেমেন্ট নিশ্চিত হলে আপনার উল্লেখিত এবং মোবাইলে একটি কনফার্মেশন মেসেজ
+                পাবেন এবং সেই সাথে আপনি একটি লিংক পাবেন, যার মাধ্যমে  আপনি ইভেন ইনভাইটেশন কার্ড ডাউনলোড করতে পারবেন।
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </dx-scroll-view>
+
+</dx-popup>
+</div>
 <!-- /main-slider -->
 <!-- banner image bottom shape -->
 <!-- <div class="position-relative">
@@ -47,7 +162,7 @@
                   <h4><a >Top Founders</a></h4>
               </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-sm-4 mt-3">
+          <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-sm-4 mt-3" (click)="showNotice()">
               <div class="box-wrap">
                   <h4><a >Notice</a></h4>
               </div>

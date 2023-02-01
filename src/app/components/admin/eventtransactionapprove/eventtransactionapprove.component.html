@@ -18,7 +18,8 @@
   <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
   <dxo-paging [enabled]="true"></dxo-paging>
   <dxo-paging [pageSize]="5"></dxo-paging>
-  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true" [allowedPageSizes]="[10,20,50, 100, 250, 500, 1000]"></dxo-pager>
+
   <dxo-grouping [contextMenuEnabled]="true" expandMode="rowClick"></dxo-grouping>
   <dxo-selection mode="none"></dxo-selection>
 
