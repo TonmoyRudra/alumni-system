@@ -11,7 +11,7 @@
 .gap-column{
     width: 50px;
 }
-.detail-label{    
+.detail-label{
     width: 20px !important;
 }
 
@@ -28,6 +28,11 @@
 .gap-column-top{
     width: 30px;
 }
-.detail-label-top{    
+.detail-label-top{
     width: 20px !important;
+}
+
+
+table{
+  width: 100%;;
 }

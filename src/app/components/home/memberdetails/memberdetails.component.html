@@ -78,6 +78,14 @@
           </dx-text-box></td>
       </tr>
       <tr>
+
+        <td class="header-label">Date Of Birth : </td>
+        <td class="detail-label">
+          <dx-date-box [(value)]="memberInfo.DOB" displayFormat="dd/MMM/yyyy"></dx-date-box>
+        </td>
+        <td class="gap-column"></td>
+      </tr>
+      <tr>
         <td class="header-label">University Batch : </td>
         <td class="detail-label">
           <dx-select-box placeholder="University Batch" [items]="UniversityBatchList"

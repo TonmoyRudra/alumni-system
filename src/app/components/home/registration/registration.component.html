@@ -66,6 +66,9 @@
                 </dxi-item>
               </dxi-item>
               <dxi-item itemType="group">
+                <dxi-item dataField="DOB" editorType="dxDateBox" [label]="{ text: 'Date Of Birth'}">
+                  <dxi-validation-rule type="required" message=" Required"> </dxi-validation-rule>
+                </dxi-item>
                 <dxi-item dataField="BloodGroup"  editorType="dxSelectBox"
                 [editorOptions]="{ items: bloodGroupList, value: '' }">
                 </dxi-item>

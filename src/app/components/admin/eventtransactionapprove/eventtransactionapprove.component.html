@@ -4,7 +4,7 @@
 <div style="height: calc(100%);overflow: scroll;">
   <dx-data-grid id="gridContainer" [dataSource]="RegionList" keyExpr="Id" [columnHidingEnabled]="false"
   [allowColumnReordering]="true" [allowColumnResizing]="true" [showBorders]="true"
-  (onRowPrepared)="onRowPrepared($event)" [showRowLines]="true" [scrolling]="{ showScrollbar: 'always' }">
+  (onRowPrepared)="onRowPrepared($event)" [showRowLines]="true" [wordWrapEnabled]="true">
 
   <!-- [remoteOperations]="true"  -->
 
@@ -12,8 +12,10 @@
   <dxo-export [enabled]="true" fileName="List" [allowExportSelectedData]="true"></dxo-export>
   <dxo-sorting mode="multiple"></dxo-sorting>
   <dxo-filter-panel [visible]="true"></dxo-filter-panel>
-  <dxo-filter-builder [visible]="true"></dxo-filter-builder>
-  <dxo-filter-row [visible]="true"></dxo-filter-row>
+  <dxo-scrolling [scrollByContent]="true" columnRenderingMode="virtual" showScrollbar="always"></dxo-scrolling>
+
+  <!-- <dxo-filter-builder [visible]="true"></dxo-filter-builder> -->
+  <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
   <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
   <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
   <dxo-paging [enabled]="true"></dxo-paging>
@@ -27,22 +29,33 @@
   <dxi-column dataField="Name"></dxi-column>
   <dxi-column dataField="Mobile"></dxi-column>
   <dxi-column dataField="Category"></dxi-column>
-  <dxi-column dataField="CreateDate" [width]='180' caption="Submission Date" dataType="datetime"
+  <dxi-column dataField="CreateDate"   caption="Submission Date" dataType="datetime"
     format="dd-MMM-yyyy hh:mm a"></dxi-column>
   <dxi-column dataField="TotalAmount" dataType="number" [editorOptions]="{ format: '#,##,##0.##' }"></dxi-column>
   <dxi-column dataField="TotalCount" caption="Total Member(s)" dataType="number"></dxi-column>
   <dxi-column dataField="BkashTransactionId" caption="Bkash Transaction"></dxi-column>
   <dxi-column dataField="BkashMobileNo" caption="Bkash MobileNo"></dxi-column>
+  <dxi-column dataField="IsApproved" caption="Status"></dxi-column>
 
 
 
-  <dxi-column caption="Actions" [width]='200' cellTemplate="action"></dxi-column>
+  <dxi-column caption="Actions"  cellTemplate="action"></dxi-column>
   <div *dxTemplate="let cell of 'action'">
-    <span *ngIf="cell.data.IsApproved">Approved</span>
-    <dx-button *ngIf="!cell.data.IsApproved" type="success" text="Approve"
-      (onClick)="Approve(cell.data.BkashTransactionId)"></dx-button>
+    <div style="    margin: 10px;">
+      <span *ngIf="cell.data.IsApproved">Approved</span>
+    </div>
+<div style="    margin: 10px;">
+  <dx-button *ngIf="!cell.data.IsApproved" type="success" text="Approve" title="Approve"
+    (onClick)="Approve(cell.data.BkashTransactionId)"></dx-button>
+    <dx-button *ngIf="cell.data.IsApproved" type="danger" text="DisApprove"  title="DisApprove"
+    (onClick)="DeApprove(cell.data.BkashTransactionId)"></dx-button>
+</div>
+<div style="    margin: 10px;">
+  <dx-button type="default" text="Details"  title="Details" (onClick)="ShowDetails(cell.data)"></dx-button>
+</div>
+
     &nbsp;
-    <dx-button type="success" text="Details" (onClick)="ShowDetails(cell.data)"></dx-button>
+
   </div>
 
   <dxo-summary>
@@ -60,26 +73,46 @@
 
 
 
-<dx-popup class="popup" [width]="600" [height]="'auto'" [showTitle]="true" title="Details" [dragEnabled]="true"
+<dx-popup class="popup" [width]="800" [height]="'auto'" [showTitle]="true" title="Details" [dragEnabled]="true"
   [closeOnOutsideClick]="false" [(visible)]="isDialogVisible">
 
   <div *dxTemplate="let data of 'content'">
     <dx-scroll-view [width]="'auto'" [height]="300" [direction]="both" [showScrollbar]="'always'">
 
       <div id="content">
+        <div class="row" style="margin-top: 10px !important;">
+          <div class="col-md-12">
+            <table class="detail-table">
+              <tr>
+                <td class="header-label">Event Name: </td>
+                <td class="detail-label">{{EventData.EventName}}</td>
+                <td class="gap-column"></td>
+                <td class="header-label">Name : </td>
+                <td class="detail-label">{{EventData.Name}}</td>
+              </tr>
+              <tr>
+                <td class="header-label">Category : </td>
+                <td class="detail-label">{{EventData.Category}}</td>
+                <td class="gap-column"></td>
+                <td class="header-label">Mobile: </td>
+                <td class="detail-label">{{EventData.Mobile}}</td>
+              </tr>
+              <tr>
+                <td class="header-label">Submission Date : </td>
+                <td class="detail-label">{{EventData.CreateDate}}</td>
+                <td class="gap-column"></td>
+                <td class="header-label">Payment Transaction Id : </td>
+                <td class="detail-label">{{EventData.BkashTransactionId}}</td>
+              </tr>
+              <tr>
+                <td class="header-label">Payment Mobile No : </td>
+                <td class="detail-label">{{EventData.BkashMobileNo}}</td>
+                <td class="gap-column"></td>
+              </tr>
 
-
-
-        <!-- <dxi-column dataField="Id"></dxi-column> -->
-        <!-- <dxi-column dataField="EventId"></dxi-column> -->
-        <!-- <dxi-column dataField="MemberId"></dxi-column> -->
-        <!-- <dxi-column dataField="IsApproved"></dxi-column> -->
-        <!-- <dxi-column dataField="ApprovedBy"></dxi-column> -->
-        <!-- <dxi-column dataField="IsActive"></dxi-column> -->
-        <!-- <dxi-column dataField="UpdatedDate"></dxi-column>
-        <dxi-column dataField="CreatedBy"></dxi-column>
-        <dxi-column dataField="UpdatedBy"></dxi-column> -->
-
+            </table>
+          </div>
+        </div>
 
         <div class="row">
           <div class="col-md-12">

@@ -3,6 +3,7 @@ export interface IRegistrationDto {
   "FatherName": "string",
   "Mothername": "string",
   "BSSYear": "string",
+  "DOB" : "2023-01-11T15:05:25.041Z",
   "UniversityBatch": "string",
   "MSSYear": "string",
   "Email": "string",
