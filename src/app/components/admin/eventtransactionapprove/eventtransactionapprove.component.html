@@ -29,6 +29,7 @@
   <dxi-column dataField="Name"></dxi-column>
   <dxi-column dataField="Mobile"></dxi-column>
   <dxi-column dataField="Category"></dxi-column>
+  <dxi-column dataField="UniversityBatch"></dxi-column>
   <dxi-column dataField="CreateDate"   caption="Submission Date" dataType="datetime"
     format="dd-MMM-yyyy hh:mm a"></dxi-column>
   <dxi-column dataField="TotalAmount" dataType="number" [editorOptions]="{ format: '#,##,##0.##' }"></dxi-column>
@@ -47,8 +48,8 @@
 <div style="    margin: 10px;">
   <dx-button *ngIf="!cell.data.IsApproved" type="success" text="Approve" title="Approve"
     (onClick)="Approve(cell.data.BkashTransactionId)"></dx-button>
-    <dx-button *ngIf="cell.data.IsApproved" type="danger" text="DisApprove"  title="DisApprove"
-    (onClick)="DeApprove(cell.data.BkashTransactionId)"></dx-button>
+    <!-- <dx-button *ngIf="cell.data.IsApproved" type="danger" text="DisApprove"  title="DisApprove"
+    (onClick)="DeApprove(cell.data.BkashTransactionId)"></dx-button> -->
 </div>
 <div style="    margin: 10px;">
   <dx-button type="default" text="Details"  title="Details" (onClick)="ShowDetails(cell.data)"></dx-button>
@@ -94,20 +95,22 @@
                 <td class="header-label">Category : </td>
                 <td class="detail-label">{{EventData.Category}}</td>
                 <td class="gap-column"></td>
-                <td class="header-label">Mobile: </td>
-                <td class="detail-label">{{EventData.Mobile}}</td>
+                <td class="header-label">University Batch: </td>
+                <td class="detail-label">{{EventData.UniversityBatch}}</td>
               </tr>
               <tr>
                 <td class="header-label">Submission Date : </td>
                 <td class="detail-label">{{EventData.CreateDate}}</td>
                 <td class="gap-column"></td>
-                <td class="header-label">Payment Transaction Id : </td>
-                <td class="detail-label">{{EventData.BkashTransactionId}}</td>
+                <td class="header-label">Mobile: </td>
+                <td class="detail-label">{{EventData.Mobile}}</td>
               </tr>
               <tr>
                 <td class="header-label">Payment Mobile No : </td>
                 <td class="detail-label">{{EventData.BkashMobileNo}}</td>
                 <td class="gap-column"></td>
+                <td class="header-label">Payment Transaction Id : </td>
+                <td class="detail-label">{{EventData.BkashTransactionId}}</td>
               </tr>
 
             </table>

@@ -6,6 +6,7 @@ export interface IEvent {
   Name: string;
   Mobile: string;
   Category: string;
+  UniversityBatch: string;
   MemberAmount: number;
   MemberCount: number;
   SpouseAmount: number;

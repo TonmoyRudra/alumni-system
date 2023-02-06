@@ -24,6 +24,7 @@ export class EventComponent implements OnInit {
     EventName: '',
     EventPlace: '',
     MemberId: '',
+    UniversityBatch: '',
     Name: '',
     Mobile: '',
     Category: '',
@@ -181,12 +182,13 @@ export class EventComponent implements OnInit {
 
   submit(e){
     this.globalService.showSpinner(true);
-    console.log(this.eventModel);
     this.eventModel.MemberCount = 1;
     this.eventModel.SpouseCount = 1;
     this.eventModel.ChildCount = this.totalChild;
     this.eventModel.DriverCount = this.totalDriver;
     this.eventModel.OtherCount = this.totalGuest;
+    this.eventModel.UniversityBatch = this.memberInfo.UniversityBatch;
+    console.log(this.eventModel);
     this.memberService.registerEventTransection(this.eventModel).subscribe(result => {
       if(result != null){
         this.globalService.showSpinner(false);
