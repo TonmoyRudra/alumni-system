@@ -183,7 +183,9 @@ export class EventComponent implements OnInit {
   submit(e){
     this.globalService.showSpinner(true);
     this.eventModel.MemberCount = 1;
-    this.eventModel.SpouseCount = 1;
+    if(this.spouseChecked){
+      this.eventModel.SpouseCount = 1;
+    }
     this.eventModel.ChildCount = this.totalChild;
     this.eventModel.DriverCount = this.totalDriver;
     this.eventModel.OtherCount = this.totalGuest;
